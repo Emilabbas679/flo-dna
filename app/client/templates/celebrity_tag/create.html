@@ -1,0 +1,96 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!-- begin:: Subheader -->
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+            Create Country </h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+
+    </div>
+
+</div>
+
+<!-- end:: Subheader -->
+
+<!-- begin:: Content -->
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    <div class="row">
+        <div class="col-md-12">
+
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Create Country
+                        </h3>
+                    </div>
+                </div>
+
+                <!--begin::Form-->
+                <form class="kt-form kt-form--label-right" method="post" action="{{url_for('client.celebirty_tag_create')}}" >
+                    {{csrf_token}}
+                    <div class="kt-portlet__body">
+
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        {% for locale in langs %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if locale.code == 'AZ' %} active {% endif %} " id="pills-tab-{{ locale.code }}"
+                                   data-toggle="pill" href="#pills-{{ locale.code }}" role="tab"
+                                   aria-controls="pills-{{ locale.code }}" aria-selected="true">{{ locale.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="tab-content pt-2 pl-1" id="pills-tabContent">
+
+                        {% for locale in langs %}
+                            <div class="tab-pane fade show {% if locale.code == 'AZ' %} active {% endif %} " id="pills-{{ locale.code }}"
+                                 role="tabpanel" aria-labelledby="pills-tab-{{ locale.code }}">
+
+                                <div class="form-group row">
+                                    <label class="col-2 col-form-label">Name</label>
+                                    <div class="col-10">
+                                        <input id="name" type="text" class="form-control"
+                                               name="name[{{locale.code}}]" placeholder="name-{{locale.code}}">
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+
+                        <div class="form-group row">
+                            <label for="exampleSelect1" class="col-2 col-form-label">Status</label>
+                            <div class="col-10">
+                                <select class="form-control" id="exampleSelect1" name="status">
+                                        <option value="active" selected>Active</option>
+                                        <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="kt-portlet__foot">
+                        <div class="kt-form__actions">
+                            <div class="row">
+                                <div class="col-2">
+                                </div>
+                                <div class="col-10">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button type="reset" class="btn btn-secondary">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!--end::Portlet-->
+        </div>
+    </div>
+</div>
+{% endblock %}
+

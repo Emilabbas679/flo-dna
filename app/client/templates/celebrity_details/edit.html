@@ -1,0 +1,167 @@
+{% extends 'layout.html' %}
+{% block css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/css/intlTelInput.css">
+  <link rel="stylesheet" href="/client/static/phone/css/main/main.css">
+{% endblock %}
+{% block content %}
+<!-- begin:: Subheader -->
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+            Edit {{detail.name}} {{detail.surname}}</h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+
+    </div>
+
+</div>
+
+<!-- end:: Subheader -->
+
+<!-- begin:: Content -->
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    <div class="row">
+        <div class="col-md-12">
+
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            {{detail.name}} {{detail.surname}}
+                        </h3>
+                    </div>
+                </div>
+
+                <!--begin::Form-->
+                <form class="kt-form kt-form--label-right" method="post" action="{{url_for('client.edit_c_detail', id=detail.id)}}" name="CountryEdit" onsubmit="return validateForm()" >
+                    {{csrf_token}}
+                    <div class="kt-portlet__body">
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-2 col-form-label">Name</label>
+                            <div class="col-10">
+                                <input class="form-control" name="name" type="text"  id="example-text-input" value="{{detail.name}}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="surname" class="col-2 col-form-label">Surname</label>
+                            <div class="col-10">
+                                <input class="form-control" name="surname" type="search"  id="surname" value="{{detail.surname}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-2 col-form-label">Email</label>
+                            <div class="col-10">
+                                <input class="form-control" name="email" type="search"  id="email" value="{{detail.email}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="username" class="col-2 col-form-label">Username</label>
+                            <div class="col-10">
+                                <input class="form-control" name="username" type="search"  id="username" value="{{detail.username}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="tags" class="col-2 col-form-label">Tags</label>
+                            <div class="col-10">
+                                <select class="form-control js-example-tokenizer" multiple name="tags" id="tags">
+                                {% for tag in tags %}
+                                    <option value="{{tag.id}}" {% if tag.id in selected_tags %} selected {% endif %}}>{{tag.name[locale]}}</option>
+                                {% endfor %}
+
+                                </select>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                    <div class="kt-portlet__foot">
+                        <div class="kt-form__actions">
+                            <div class="row">
+                                <div class="col-2">
+                                </div>
+                                <div class="col-10">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button type="reset" class="btn btn-secondary">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!--end::Portlet-->
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block js %}
+<script>
+    function validateForm() {
+        var name = document.forms["CountryCreate"]["name"].value;
+        var surname = document.forms["CountryCreate"]["surname"].value;
+        var email = document.forms["CountryCreate"]["email"].value;
+        var username = document.forms["CountryCreate"]["username"].value;
+        if (name == ''){
+            $('input[name="name"]').addClass('is-invalid')
+        }
+        else{
+            $('input[name="name"]').removeClass('is-invalid')
+        }
+
+        if (surname == ''){
+            $('input[name="surname"]').addClass('is-invalid')
+        }
+        else{
+            $('input[name="surname"]').removeClass('is-invalid')
+        }
+
+        if (email == ''){
+            $('input[name="email"]').addClass('is-invalid')
+        }
+        else{
+            $('input[name="email"]').removeClass('is-invalid')
+        }
+
+        if(username == ''){
+            $('input[name="username"]').addClass('is-invalid')
+        }
+        else{
+            $('input[name="username"]').removeClass('is-invalid')
+        }
+
+        if(surname == '' || name == '' || email == '' || username == ''){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"></script>
+
+<script>
+    $(".js-example-tokenizer").select2({
+    tags: true,
+    tokenSeparators: [',', ' ']
+})
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/js/intlTelInput.min.js"></script>
+<!-- <script src="assets/js/intlTelInput.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.4/js/intlTelInput-jquery.min.js"></script>
+
+<script src="/client/static/phone/intl-add-phone.js"></script>
+<script src="/client/static/phone/phone-index.js"></script>
+{% endblock %}

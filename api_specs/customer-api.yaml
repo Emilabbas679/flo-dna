@@ -1,0 +1,72 @@
+openapi: 3.0.2
+
+info:
+  title: Delhero Customer API
+  version: 1.0.0
+  description: 6second Customer API
+  contact:
+      name: Ali Heyderli
+      email: ali.heyderli@gmail.com
+
+servers:
+  - url: http://127.0.0.1:5000/customer/api
+    description: Development server
+
+paths:
+  /hello:
+    get:
+      tags:
+        - hello
+      summary: Returns Hello world
+      description: Sample enpoint that returns Hello World message
+      parameters:
+        - $ref: '#/components/parameters/nameParam'
+      responses:
+        '200':
+         description: OK
+         content:
+           application/json:
+             schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/HelloWorldMessage'
+components:
+  parameters:
+    nameParam:
+      name: name
+      in: query
+      required: false
+      description: Optional parameter to make enpoint to say your name
+      schema:
+        type: string
+  schemas:
+    HelloWorldMessage:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: stringbb
+          example: "James Bond"
+    Customer:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: '024c8d63-83d7-4abe-ac4f-0c23fb8d8f26'
+        username:
+          type: string
+          example: 'emishow'
+        first_name:
+          type: string
+          example: 'Eflatun'
+        last_name:
+          type: string
+          example: 'Amishov'
+        phone_number:
+          type: string
+          example: '+994501234567'
+        email:
+          type: string
+          example: 'emishow@gmail.com'

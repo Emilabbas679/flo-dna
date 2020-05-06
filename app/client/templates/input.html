@@ -1,0 +1,742 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<!-- begin:: Subheader -->
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+            Input Groups </h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+        <div class="kt-subheader__breadcrumbs">
+            <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <a href="" class="kt-subheader__breadcrumbs-link">
+                Crud </a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <a href="" class="kt-subheader__breadcrumbs-link">
+                Forms & Controls </a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <a href="" class="kt-subheader__breadcrumbs-link">
+                Form Controls </a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <a href="" class="kt-subheader__breadcrumbs-link">
+                Input Groups </a>
+
+            <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+        </div>
+    </div>
+    <div class="kt-subheader__toolbar">
+        <div class="kt-subheader__wrapper">
+            <a href="#" class="btn kt-subheader__btn-primary">
+                Actions &nbsp;
+
+                <!--<i class="flaticon2-calendar-1"></i>-->
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon kt-svg-icon--sm">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect id="bound" x="0" y="0" width="24" height="24" />
+                        <rect id="Rectangle-8" fill="#000000" x="4" y="5" width="16" height="3" rx="1.5" />
+                        <path d="M7.5,11 L16.5,11 C17.3284271,11 18,11.6715729 18,12.5 C18,13.3284271 17.3284271,14 16.5,14 L7.5,14 C6.67157288,14 6,13.3284271 6,12.5 C6,11.6715729 6.67157288,11 7.5,11 Z M10.5,17 L13.5,17 C14.3284271,17 15,17.6715729 15,18.5 C15,19.3284271 14.3284271,20 13.5,20 L10.5,20 C9.67157288,20 9,19.3284271 9,18.5 C9,17.6715729 9.67157288,17 10.5,17 Z" id="Combined-Shape" fill="#000000" opacity="0.3" />
+                    </g>
+                </svg> </a>
+            <div class="dropdown dropdown-inline" data-toggle="kt-tooltip" title="Quick actions" data-placement="left">
+                <a href="#" class="btn btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon kt-svg-icon--success kt-svg-icon--md">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <polygon id="Shape" points="0 0 24 0 24 24 0 24" />
+                            <path d="M5.85714286,2 L13.7364114,2 C14.0910962,2 14.4343066,2.12568431 14.7051108,2.35473959 L19.4686994,6.3839416 C19.8056532,6.66894833 20,7.08787823 20,7.52920201 L20,20.0833333 C20,21.8738751 19.9795521,22 18.1428571,22 L5.85714286,22 C4.02044787,22 4,21.8738751 4,20.0833333 L4,3.91666667 C4,2.12612489 4.02044787,2 5.85714286,2 Z" id="Combined-Shape" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+                            <path d="M11,14 L9,14 C8.44771525,14 8,13.5522847 8,13 C8,12.4477153 8.44771525,12 9,12 L11,12 L11,10 C11,9.44771525 11.4477153,9 12,9 C12.5522847,9 13,9.44771525 13,10 L13,12 L15,12 C15.5522847,12 16,12.4477153 16,13 C16,13.5522847 15.5522847,14 15,14 L13,14 L13,16 C13,16.5522847 12.5522847,17 12,17 C11.4477153,17 11,16.5522847 11,16 L11,14 Z" id="Combined-Shape" fill="#000000" />
+                        </g>
+                    </svg>
+
+                    <!--<i class="flaticon2-plus"></i>-->
+                </a>
+                <div class="dropdown-menu dropdown-menu-fit dropdown-menu-md dropdown-menu-right">
+
+                    <!--begin::Nav-->
+                    <ul class="kt-nav">
+                        <li class="kt-nav__head">
+                            Add anything or jump to:
+                            <i class="flaticon2-information" data-toggle="kt-tooltip" data-placement="right" title="Click to learn more..."></i>
+                        </li>
+                        <li class="kt-nav__separator"></li>
+                        <li class="kt-nav__item">
+                            <a href="#" class="kt-nav__link">
+                                <i class="kt-nav__link-icon flaticon2-drop"></i>
+                                <span class="kt-nav__link-text">Order</span>
+                            </a>
+                        </li>
+                        <li class="kt-nav__item">
+                            <a href="#" class="kt-nav__link">
+                                <i class="kt-nav__link-icon flaticon2-calendar-8"></i>
+                                <span class="kt-nav__link-text">Ticket</span>
+                            </a>
+                        </li>
+                        <li class="kt-nav__item">
+                            <a href="#" class="kt-nav__link">
+                                <i class="kt-nav__link-icon flaticon2-link"></i>
+                                <span class="kt-nav__link-text">Goal</span>
+                            </a>
+                        </li>
+                        <li class="kt-nav__item">
+                            <a href="#" class="kt-nav__link">
+                                <i class="kt-nav__link-icon flaticon2-new-email"></i>
+                                <span class="kt-nav__link-text">Support Case</span>
+                                <span class="kt-nav__link-badge">
+                                    <span class="kt-badge kt-badge--success">5</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="kt-nav__separator"></li>
+                        <li class="kt-nav__foot">
+                            <a class="btn btn-label-brand btn-bold btn-sm" href="#">Upgrade plan</a>
+                            <a class="btn btn-clean btn-bold btn-sm" href="#" data-toggle="kt-tooltip" data-placement="right" title="Click to learn more...">Learn more</a>
+                        </li>
+                    </ul>
+
+                    <!--end::Nav-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end:: Subheader -->
+
+<!-- begin:: Content -->
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    <div class="row">
+        <div class="col-md-6">
+
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Basic Example
+                        </h3>
+                    </div>
+                </div>
+
+                <!--begin::Form-->
+                <form class="kt-form kt-form--label-right">
+                    <div class="kt-portlet__body">
+                        <div class="form-group form-group-last">
+                            <div class="alert alert-secondary" role="alert">
+                                <div class="alert-icon"><i class="flaticon-warning kt-font-brand"></i></div>
+                                <div class="alert-text">
+                                    Use any icon in input group from <a class="kt-link" href="demo1/components/icons/flaticon.html">Flaticon</a>, <a class="kt-link" href="demo1/components/icons/fontawesome5.html">Fontawesome 5</a>, <a class="kt-link" href="demo1/components/icons/lineawesome.html">Lineawesome</a> or <a class="kt-link" href="demo1/components/icons/socicons.html">Socicons</a> icons.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Left Addon</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text">@</span></div>
+                                <input type="text" class="form-control" placeholder="Email" aria-describedby="basic-addon1">
+                            </div>
+                            <span class="form-text text-muted">Some help content goes here</span>
+                        </div>
+                        <div class="form-group form-group-marginless">
+                            <label>Right Addon</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon2">
+                                <div class="input-group-append"><span class="input-group-text" id="basic-addon2">@example.com</span></div>
+                            </div>
+                        </div>
+                        <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                        <div class="form-group ">
+                            <label>Joint Addons</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                    <span class="input-group-text">0.00</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Left & Right Addons</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">#</span></div>
+                                <input type="text" class="form-control" placeholder="Units" aria-describedby="basic-addon1">
+                                <div class="input-group-append"><span class="input-group-text" id="basic-addon1">px</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__foot">
+                        <div class="kt-form__actions">
+                            <button type="reset" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!--end::Form-->
+            </div>
+
+            <!--end::Portlet-->
+
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            With Icons
+                        </h3>
+                    </div>
+                </div>
+
+                <!--begin::Form-->
+                <form class="kt-form kt-form--label-right">
+                    <div class="kt-portlet__body">
+                        <div class="form-group form-group-last">
+                            <div class="alert alert-secondary" role="alert">
+                                <div class="alert-icon"><i class="flaticon-warning kt-font-brand"></i></div>
+                                <div class="alert-text">
+                                    Easily extend form controls by adding text, buttons, icons, or button groups on either side of textual.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Left Addon</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="la la-exclamation-triangle kt-font-brand"></i></span></div>
+                                <input type="text" class="form-control" placeholder="Email" aria-describedby="basic-addon1">
+                            </div>
+                            <span class="form-text text-muted">Some help content goes here</span>
+                        </div>
+                        <div class="form-group form-group-marginless">
+                            <label>Right Addon</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
+                                <div class="input-group-append"><span class="input-group-text" id="basic-addon2"><i class="la la-group"></i></span></div>
+                            </div>
+                        </div>
+                        <div class="kt-separator kt-separator--border-dashed kt-separator--space-lg"></div>
+                        <div class="form-group ">
+                            <label>Joint Addons</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="0.00" aria-label="Amount (to the nearest dollar)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="la la-registered"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Both Addons</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend"><span class="input-group-text" id="basic-addon2"><i class="flaticon-refresh"></i></span></div>
+                                <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
+                                <div class="input-group-append"><span class="input-group-text" id="basic-addon2"><i class="flaticon-user"></i></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__foot">
+                        <div class="kt-form__actions">
+                            <button type="reset" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!--end::Form-->
+            </div>
+
+            <!--end::Portlet-->
+
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Sizing
+                        </h3>
+                    </div>
+                </div>
+
+                <!--begin::Form-->
+                <form class="kt-form kt-form--label-right">
+                    <div class="kt-portlet__body">
+                        <div class="form-group form-group-last">
+                            <div class="alert alert-secondary" role="alert">
+                                <div class="alert-icon"><i class="flaticon-warning kt-font-brand"></i></div>
+                                <div class="alert-text">
+                                    Add the relative form sizing classes to the <code>.input-group</code> itself and contents within
+                                    will automatically resize.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Large Input Group</label>
+                            <div class="input-group input-group-lg">
+                                <div class="input-group-prepend"><span class="input-group-text" id="basic-addon1"><i class="la la-exclamation-triangle kt-font-brand"></i></span></div>
+                                <input type="text" class="form-control" placeholder="Large size" aria-describedby="basic-addon1">
+                            </div>
+                            <span class="form-text text-muted">Some help content goes here</span>
+                        </div>
+                        <div class="form-group ">
+                            <label>Large Input Group</label>
+                            <div class="input-group input-group-lg">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="flaticon-refresh"></i></span>
+                                    <span class="input-group-text">0.00</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Large size">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Small Input Group</label>
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control" placeholder="Small size" aria-describedby="basic-addon2">
+                                <div class="input-group-append"><span class="input-group-text" id="basic-addon2"><i class="la la-group"></i></span></div>
+                            </div>
+                        </div>
+                        <div class="form-group  input-group-sm">
+                            <label>Small Input Group</label>
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-prepend"><span class="input-group-text" id="basic-addon2"><i class="fa fa-paper-plane" aria-hidden="true"></i></span></div>
+                                <input type="text" class="form-control" placeholder="Small size" aria-describedby="basic-addon2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__foot">
+                        <div class="kt-form__actions">
+                            <button type="reset" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!--end::Form-->
+            </div>
+
+            <!--end::Portlet-->
+
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Input Icons
+                        </h3>
+                    </div>
+                </div>
+
+                <!--begin::Form-->
+                <form class="kt-form kt-form--label-right">
+                    <div class="kt-portlet__body">
+                        <div class="form-group form-group-last">
+                            <div class="alert alert-secondary" role="alert">
+                                <div class="alert-icon"><i class="flaticon-warning kt-font-brand"></i></div>
+                                <div class="alert-text">
+                                    Use custom icon input component to place icon inside input control.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Left Icon Input</label>
+                            <div class="kt-input-icon kt-input-icon--left">
+                                <input type="text" class="form-control" placeholder="Search..." id="generalSearch">
+                                <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                                    <span><i class="la la-search"></i></span>
+                                </span>
+                            </div>
+                            <span class="form-text text-muted">Some help content goes here</span>
+                        </div>
+                        <div class="form-group ">
+                            <label>Right Icon Input</label>
+                            <div class="kt-input-icon kt-input-icon--right">
+                                <input type="text" class="form-control" placeholder="Search..." id="generalSearch">
+                                <span class="kt-input-icon__icon kt-input-icon__icon--right">
+                                    <span><i class="la la-search"></i></span>
+                                </span>
+                            </div>
+                            <span class="form-text text-muted">Some help content goes here</span>
+                        </div>
+                        <div class="form-group ">
+                            <label>Large Size</label>
+                            <div class="kt-input-icon kt-input-icon--left">
+                                <input type="text" class="form-control form-control-lg" placeholder="Search..." id="generalSearch">
+                                <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                                    <span><i class="la la-download"></i></span>
+                                </span>
+                            </div>
+                            <span class="form-text text-muted">Some help content goes here</span>
+                        </div>
+                        <div class="form-group ">
+                            <label>Small Size</label>
+                            <div class="kt-input-icon kt-input-icon--left">
+                                <input type="text" class="form-control form-control-sm" placeholder="Search..." id="generalSearch">
+                                <span class="kt-input-icon__icon kt-input-icon__icon--left">
+                                    <span><i class="la la-binoculars"></i></span>
+                                </span>
+                            </div>
+                            <span class="form-text text-muted">Some help content goes here</span>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__foot">
+                        <div class="kt-form__actions">
+                            <button type="reset" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!--end::Form-->
+            </div>
+
+            <!--end::Portlet-->
+        </div>
+        <div class="col-md-6">
+
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Checkboxes and Radio addons
+                        </h3>
+                    </div>
+                </div>
+
+                <!--begin::Form-->
+                <form class="kt-form">
+                    <div class="kt-portlet__body">
+                        <div class="form-group form-group-last">
+                            <div class="alert alert-secondary" role="alert">
+                                <div class="alert-icon"><i class="flaticon-warning kt-font-brand"></i></div>
+                                <div class="alert-text">
+                                    Place any checkbox or radio option within an input group’s addon instead of text.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Left Checkbox Addon</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <label class="kt-checkbox kt-checkbox--single kt-checkbox--success">
+                                            <input type="checkbox" checked="">
+                                            <span></span>
+                                        </label>
+                                    </span>
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Text input with checkbox">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Right Checkbox Addon</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Text input with checkbox">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <label class="kt-checkbox kt-checkbox--single kt-checkbox--primary">
+                                            <input type="checkbox" checked="">
+                                            <span></span>
+                                        </label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Right & Left Checkbox Addon</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <label class="kt-checkbox kt-checkbox--single">
+                                            <input type="checkbox" checked>
+                                            <span></span>
+                                        </label>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Text input with checkbox">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <label class="kt-checkbox kt-checkbox--single">
+                                            <input type="checkbox">
+                                            <span></span>
+                                        </label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Left Radio Addon</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <label class="kt-radio kt-radio--single kt-radio--success">
+                                            <input type="radio" checked="">
+                                            <span></span>
+                                        </label>
+                                    </span>
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Text input with radio">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Right Radio Addon</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Text input with radio">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <label class="kt-radio kt-radio--single kt-radio--primary">
+                                            <input type="radio" checked="">
+                                            <span></span>
+                                        </label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Right & Left Radio Addon</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <label class="kt-radio kt-radio--single">
+                                            <input type="radio">
+                                            <span></span>
+                                        </label>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Text input with radio">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <label class="kt-radio kt-radio--single">
+                                            <input type="radio">
+                                            <span></span>
+                                        </label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__foot">
+                        <div class="kt-form__actions">
+                            <button type="reset" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!--end::Form-->
+            </div>
+
+            <!--end::Portlet-->
+
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Button Addons
+                        </h3>
+                    </div>
+                </div>
+
+                <!--begin::Form-->
+                <form class="kt-form kt-form--label-right">
+                    <div class="kt-portlet__body">
+                        <div class="form-group form-group-last">
+                            <div class="alert alert-secondary" role="alert">
+                                <div class="alert-icon"><i class="flaticon-warning kt-font-brand"></i></div>
+                                <div class="alert-text">
+                                    Buttons in input groups must wrapped in a <code>.input-group-prepend</code> or <code>.input-group-append</code> for proper alignment and sizing.
+                                    This is required due to default browser styles that cannot be overridden.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Left Addon Button</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-secondary" type="button">Go!</button>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Search for...">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Right Addon Button</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary" type="button">Go!</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Left & Right Addon Button</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-secondary" type="button">Go!</button>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary" type="button">Go!</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Left Addon Button</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-brand" type="button">Go!</button>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Search for...">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Right Addon Button</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">Go!</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Left & Right Addon Button</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-success" type="button">Go!</button>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <div class="input-group-append">
+                                    <button class="btn btn-warning" type="button">Go!</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__foot">
+                        <div class="kt-form__actions">
+                            <button type="reset" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!--end::Form-->
+            </div>
+
+            <!--end::Portlet-->
+
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            Buttons With Dropdowns
+                        </h3>
+                    </div>
+                </div>
+
+                <!--begin::Form-->
+                <form class="kt-form kt-form--label-right">
+                    <div class="kt-portlet__body">
+                        <div class="form-group form-group-last">
+                            <div class="alert alert-secondary" role="alert">
+                                <div class="alert-icon"><i class="flaticon-warning kt-font-brand"></i></div>
+                                <div class="alert-text">
+                                    The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label>Left Button Dropdown</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <div role="separator" class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Separated link</a>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                            </div>
+                            <span class="form-text text-muted">Some help content goes here</span>
+                        </div>
+                        <div class="form-group ">
+                            <label>Right Button Dropdown</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <div role="separator" class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Separated link</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="form-text text-muted">Some help content goes here</span>
+                        </div>
+                        <div class="form-group ">
+                            <label>Left & Right Button Dropdown</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <div role="separator" class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Separated link</a>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                        <div role="separator" class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Separated link</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="form-text text-muted">Some help content goes here</span>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__foot">
+                        <div class="kt-form__actions">
+                            <button type="reset" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!--end::Form-->
+            </div>
+
+            <!--end::Portlet-->
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

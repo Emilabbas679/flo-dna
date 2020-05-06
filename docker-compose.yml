@@ -1,0 +1,26 @@
+version: '2'
+
+volumes:
+  postgres_data:
+    external: true
+
+services:
+  postgres:
+    image: postgres:9.6
+    ports:
+      - 5436:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/delhero/data
+    environment:
+      - POSTGRES_USER=
+      - POSTGRES_PASSWORD=
+      - POSTGRES_DB=
+  gotham:
+    build: .
+    ports:
+      - 8090:80
+    links:
+      - postgres
+    environment:
+      APP_SETTINGS: production
+      SQLALCHEMY_DATABASE_URI: 'postgres://delhero/

@@ -1,0 +1,335 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-03-15 17:25+0400\n"
+"PO-Revision-Date: 2020-02-25 22:54+0400\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: ru <LL@li.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: app/client/forms/client_forms.py:11
+msgid "Pickup location"
+msgstr ""
+
+#: app/client/forms/client_forms.py:15
+msgid "Receiver name"
+msgstr ""
+
+#: app/client/forms/client_forms.py:16
+msgid "Receiver phone"
+msgstr ""
+
+#: app/client/forms/client_forms.py:17
+#: app/client/templates/account/active-orders.html:72
+#: app/client/templates/account/finished-orders.html:74
+#: app/client/templates/account/pending-orders.html:72
+msgid "Message"
+msgstr "Unvanim"
+
+#: app/client/forms/client_forms.py:18
+msgid "Payment type"
+msgstr ""
+
+#: app/client/forms/client_forms.py:19
+msgid "Total price"
+msgstr ""
+
+#: app/client/forms/client_forms.py:20
+msgid "Delivery type"
+msgstr ""
+
+#: app/client/templates/index.html:316
+msgid "Popular search"
+msgstr ""
+
+#: app/client/templates/layout-old.html:111
+msgid "Orders"
+msgstr ""
+
+#: app/client/templates/layout-old.html:114
+msgid "Profile"
+msgstr ""
+
+#: app/client/templates/layout-old.html:115
+msgid "Logout"
+msgstr ""
+
+#: app/client/templates/layout-old.html:126
+msgid "Log in"
+msgstr ""
+
+#: app/client/templates/layout-old.html:129
+msgid "Order now"
+msgstr ""
+
+#: app/client/templates/layout.html:260
+msgid "My Orders"
+msgstr ""
+
+#: app/client/templates/layout.html:261
+msgid "My Receivers"
+msgstr ""
+
+#: app/client/templates/account/my-addresses.html:26
+#: app/client/templates/layout.html:262
+msgid "My Addresses"
+msgstr ""
+
+#: app/client/templates/layout.html:267
+msgid "Sign in"
+msgstr ""
+
+#: app/client/templates/layout.html:268
+msgid "Register"
+msgstr ""
+
+#: app/client/templates/layout.html:351
+msgid "Sell on"
+msgstr "store-ru"
+
+#: app/client/templates/payment-result.html:12
+msgid "Your payment has been successfully"
+msgstr ""
+
+#: app/client/templates/payment-result.html:16
+msgid "Something went wrong, please try again"
+msgstr ""
+
+#: app/client/templates/product-old.html:100
+#: app/client/templates/product.html:71
+msgid "SKU"
+msgstr ""
+
+#: app/client/templates/product-old.html:101
+#: app/client/templates/product.html:72
+msgid "Availability"
+msgstr ""
+
+#: app/client/templates/search.html:120
+msgid "Tags"
+msgstr ""
+
+#: app/client/templates/track-order.html:18
+msgid "E-mail"
+msgstr ""
+
+#: app/client/templates/track-order.html:22
+msgid "Order ID"
+msgstr ""
+
+#: app/client/templates/track-order.html:25
+msgid "Submit"
+msgstr ""
+
+#: app/client/templates/account/active-orders.html:3
+msgid "Active Orders"
+msgstr ""
+
+#: app/client/templates/account/active-orders.html:23
+#: app/client/templates/account/finished-orders.html:25
+#: app/client/templates/account/pending-orders.html:23
+msgid "Aktiv sifarişlər"
+msgstr ""
+
+#: app/client/templates/account/active-orders.html:26
+#: app/client/templates/account/finished-orders.html:28
+#: app/client/templates/account/pending-orders.html:26
+msgid "Gözləmədə olan"
+msgstr ""
+
+#: app/client/templates/account/active-orders.html:29
+#: app/client/templates/account/finished-orders.html:31
+#: app/client/templates/account/pending-orders.html:29
+msgid "Bitmiş sifarişlər"
+msgstr ""
+
+#: app/client/templates/account/active-orders.html:47
+#: app/client/templates/account/finished-orders.html:49
+#: app/client/templates/account/pending-orders.html:47
+msgid "Product Name"
+msgstr ""
+
+#: app/client/templates/account/active-orders.html:51
+#: app/client/templates/account/finished-orders.html:53
+#: app/client/templates/account/pending-orders.html:51
+msgid "Track Key"
+msgstr ""
+
+#: app/client/templates/account/active-orders.html:55
+#: app/client/templates/account/edit-receiver.html:34
+#: app/client/templates/account/finished-orders.html:57
+#: app/client/templates/account/pending-orders.html:55
+msgid "Receiver"
+msgstr ""
+
+#: app/client/templates/account/active-orders.html:59
+#: app/client/templates/account/finished-orders.html:61
+#: app/client/templates/account/pending-orders.html:59
+msgid "Receiver Address"
+msgstr ""
+
+#: app/client/templates/account/active-orders.html:63
+#: app/client/templates/account/finished-orders.html:65
+#: app/client/templates/account/pending-orders.html:63
+msgid "Receiver phones"
+msgstr ""
+
+#: app/client/templates/account/active-orders.html:77
+#: app/client/templates/account/finished-orders.html:79
+#: app/client/templates/account/pending-orders.html:77
+msgid "Delivery Type"
+msgstr ""
+
+#: app/client/templates/account/active-orders.html:80
+#: app/client/templates/account/finished-orders.html:82
+#: app/client/templates/account/pending-orders.html:80
+msgid "Fast"
+msgstr ""
+
+#: app/client/templates/account/active-orders.html:82
+#: app/client/templates/account/finished-orders.html:84
+#: app/client/templates/account/pending-orders.html:82
+msgid "Scheduled"
+msgstr ""
+
+#: app/client/templates/account/active-orders.html:89
+#: app/client/templates/account/finished-orders.html:91
+#: app/client/templates/account/pending-orders.html:89
+msgid "Delivery Date"
+msgstr ""
+
+#: app/client/templates/account/active-orders.html:93
+#: app/client/templates/account/finished-orders.html:95
+#: app/client/templates/account/pending-orders.html:93
+msgid "Delivery Time"
+msgstr ""
+
+#: app/client/templates/account/active-orders.html:98
+#: app/client/templates/account/finished-orders.html:100
+#: app/client/templates/account/pending-orders.html:98
+msgid "Order Status"
+msgstr ""
+
+#: app/client/templates/account/active-orders.html:101
+#: app/client/templates/account/active-orders.html:105
+#: app/client/templates/account/finished-orders.html:103
+#: app/client/templates/account/finished-orders.html:107
+#: app/client/templates/account/pending-orders.html:101
+#: app/client/templates/account/pending-orders.html:105
+msgid "Pending"
+msgstr ""
+
+#: app/client/templates/account/active-orders.html:103
+#: app/client/templates/account/finished-orders.html:105
+#: app/client/templates/account/pending-orders.html:103
+msgid "Done"
+msgstr ""
+
+#: app/client/templates/account/add-new-address.html:3
+#: app/client/templates/account/add-new-address.html:26
+#: app/client/templates/account/add-new-address.html:54
+#: app/client/templates/account/my-addresses.html:29
+msgid "Add New Address"
+msgstr ""
+
+#: app/client/templates/account/add-new-address.html:33
+#: app/client/templates/account/edit-address.html:33
+msgid "Address Name"
+msgstr ""
+
+#: app/client/templates/account/add-new-address.html:39
+#: app/client/templates/account/edit-address.html:39
+msgid "Address"
+msgstr ""
+
+#: app/client/templates/account/add-new-address.html:44
+#: app/client/templates/account/edit-address.html:44
+#: app/client/templates/account/edit-new-receiver.html:33
+msgid "Address Details"
+msgstr ""
+
+#: app/client/templates/account/add-new-receiver.html:3
+#: app/client/templates/account/add-new-receiver.html:28
+#: app/client/templates/account/add-new-receiver.html:74
+#: app/client/templates/account/edit-address.html:3
+#: app/client/templates/account/edit-new-receiver.html:3
+#: app/client/templates/account/edit-receiver.html:3
+#: app/client/templates/account/my-receivers.html:29
+msgid "Add New Receiver"
+msgstr ""
+
+#: app/client/templates/account/add-new-receiver.html:35
+msgid "Full name"
+msgstr ""
+
+#: app/client/templates/account/edit-address.html:26
+#: app/client/templates/account/edit-address.html:54
+#: app/client/templates/account/edit-new-receiver.html:26
+#: app/client/templates/account/edit-new-receiver.html:39
+msgid "Edit Address"
+msgstr ""
+
+#: app/client/templates/account/edit-receiver.html:26
+#: app/client/templates/account/edit-receiver.html:40
+msgid "Edit Receiver"
+msgstr ""
+
+#: app/client/templates/account/finished-orders.html:4
+msgid "Finished Orders"
+msgstr ""
+
+#: app/client/templates/account/my-addresses.html:51
+#: app/client/templates/account/my-receivers.html:52
+msgid "Edit"
+msgstr ""
+
+#: app/client/templates/account/my-addresses.html:54
+#: app/client/templates/account/my-receivers.html:55
+msgid "Remove"
+msgstr ""
+
+#: app/client/templates/account/my-profile.html:3
+msgid "My Profile"
+msgstr ""
+
+#: app/client/templates/account/my-receivers.html:26
+msgid "My receivers"
+msgstr ""
+
+#: app/client/templates/account/pending-orders.html:3
+msgid "Pending Orders"
+msgstr ""
+
+#: app/client/templates/helpers/_navbarprofile.html:42
+msgid " My Addresses"
+msgstr ""
+
+#: app/client/templates/helpers/_navbarprofile.html:50
+msgid " My Receivers"
+msgstr ""
+
+#: app/client/templates/translate/layouts/layout.html:12
+#: app/client/templates/translate/layouts/layout.html:44
+msgid "Translate"
+msgstr ""
+
+#: app/client/templates/translate/layouts/layout.html:54
+msgid "Dashboard"
+msgstr ""
+
+#~ msgid "Search key"
+#~ msgstr ""
+
+#~ msgid " My Address"
+#~ msgstr ""

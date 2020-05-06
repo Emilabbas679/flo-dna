@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!-- begin:: Subheader -->
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+        </h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+
+    </div>
+
+</div>
+
+<!-- end:: Subheader -->
+
+<!-- begin:: Content -->
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    <div class="row">
+        <div class="col-md-12">
+
+            <!--begin::Portlet-->
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            {{order.product.detail.name[locale]}}
+                        </h3>
+                    </div>
+                </div>
+
+                <!--begin::Form-->
+                <form class="kt-form kt-form--label-right" method="post" action="{{url_for('.create_store_offer', key='extraorder', id=order.id)}}">
+                    {{csrf_token}}
+                    <div class="kt-portlet__body">
+                        <ol>
+                            {% for store in stores %}
+                            <li>
+                                <input type="checkbox" {% if store.id in selected %} checked {% endif %} name="stores" id="store-{{loop.index}}" value="{{store.id}}"> <label
+                                    for="store-{{loop.index}}">{{store.company_name}}</label>
+                            </li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                    <div class="kt-portlet__foot">
+                        <div class="kt-form__actions">
+                            <div class="row">
+                                <div class="col-2">
+                                </div>
+                                <div class="col-10">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <button onclick="goBack()" class="btn btn-secondary">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!--end::Portlet-->
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

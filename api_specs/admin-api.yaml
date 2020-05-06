@@ -1,0 +1,2192 @@
+openapi: 3.0.2
+
+info:
+  title: 6second Admin API
+  version: 1.0.0
+  description: 6second Admin API
+  contact:
+      name: Ali Heyderli
+      email: ali.heyderli@gmail.com
+
+servers:
+  - url: http://127.0.0.1:5000/admin/api
+    description: Development server
+
+paths:
+  /countries:
+    get:
+      summary: List of countries
+      tags:
+        - countries
+      description: Page through list of countries
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          $ref: '#/components/responses/Countries'
+        default:
+          $ref: '#/components/responses/Problem'
+    post:
+      summary: Create Country
+      tags:
+        - countries
+      description: Create new Country
+      requestBody:
+        $ref: '#/components/requestBodies/Country'
+      responses:
+        '200':
+          description: Country updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        default:
+          $ref: '#/components/responses/Problem'
+  /countries/{country-id}:
+    get:
+      summary: Get country
+      tags:
+        - countries
+      description: Returns a single country with given id
+      parameters:
+        - $ref: '#/components/parameters/CountryId'
+      responses:
+        '200':
+          $ref: '#/components/responses/Country'
+        default:
+          $ref: '#/components/responses/Problem'
+    put:
+      summary: Update Country
+      tags:
+        - countries
+      description: Update country with given id
+      parameters:
+        - $ref: '#/components/parameters/CountryId'
+      requestBody:
+        $ref: '#/components/requestBodies/Country'
+      responses:
+        '200':
+          description: Country updated
+        default:
+          $ref: '#/components/responses/Problem'
+  /languages:
+    get:
+      summary: List of languages
+      tags:
+        - languages
+      description: Page through list of languages
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          $ref: '#/components/responses/Languages'
+        default:
+          $ref: '#/components/responses/Problem'
+    post:
+      summary: Create Language
+      tags:
+        - languages
+      description: Create new Language
+      requestBody:
+        $ref: '#/components/requestBodies/Language'
+      responses:
+        '200':
+          description: Language updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        default:
+          $ref: '#/components/responses/Problem'
+  /languages/{language-id}:
+    get:
+      summary: Get language
+      tags:
+        - languages
+      description: Returns a single language with given id
+      parameters:
+        - $ref: '#/components/parameters/LanguageId'
+      responses:
+        '200':
+          $ref: '#/components/responses/Language'
+        default:
+          $ref: '#/components/responses/Problem'
+    put:
+      summary: Update Country
+      tags:
+        - languages
+      description: Update language with given id
+      parameters:
+        - $ref: '#/components/parameters/LanguageId'
+      requestBody:
+        $ref: '#/components/requestBodies/Language'
+      responses:
+        '200':
+          description: Country updated
+        default:
+          $ref: '#/components/responses/Problem'
+  /landing-pages:
+    get:
+      summary: List of landing pages
+      tags:
+        - landing pages
+      description: Page through list of landing pages
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          $ref: '#/components/responses/LandingPages'
+        default:
+          $ref: '#/components/responses/Problem'
+    post:
+      summary: Create Language
+      tags:
+        - landing pages
+      description: Create new Language
+      requestBody:
+        $ref: '#/components/requestBodies/LandingPage'
+      responses:
+        '200':
+          description: Language updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        default:
+          $ref: '#/components/responses/Problem'
+  /landing-pages/{landing-id}:
+    get:
+      summary: Get language
+      tags:
+        - landing pages
+      description: Returns a single language with given id
+      parameters:
+        - $ref: '#/components/parameters/LandingId'
+      responses:
+        '200':
+          $ref: '#/components/responses/LandingPage'
+        default:
+          $ref: '#/components/responses/Problem'
+    put:
+      summary: Update Country
+      tags:
+        - landing pages
+      description: Update language with given id
+      parameters:
+        - $ref: '#/components/parameters/LandingId'
+      requestBody:
+        $ref: '#/components/requestBodies/LandingPage'
+      responses:
+        '200':
+          description: Country updated
+        default:
+          $ref: '#/components/responses/Problem'
+  /images/{image-id}:
+    put:
+      summary: Create or Update single image
+      tags:
+        - images
+      description: |
+        Create or Update single image. This will return unique id for image, that then is used to get
+        signed url
+      parameters:
+        - $ref: '#/components/parameters/ImageId'
+      requestBody:
+        $ref: '#/components/requestBodies/Image'
+      responses:
+        '200':
+          description: Image updated
+        '201':
+          description: Image created
+        default:
+          $ref: '#/components/responses/Problem'
+  /images/{image-id}/signed-url:
+    get:
+      tags:
+        - images
+      operationId: app.admin_api.controllers.images.signed_url.controller.search
+      summary: Signed S3 url
+      description: Returns signed S3 url to upload files to
+      parameters:
+        - $ref: '#/components/parameters/ImageId'
+      responses:
+        '200':
+          $ref: '#/components/responses/SignedUrl'
+        default:
+          $ref: '#/components/responses/Problem'
+  /categories:
+    get:
+      summary: List of categories
+      tags:
+        - categories
+      description: Page through list of categories
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          $ref: '#/components/responses/Categories'
+        default:
+          $ref: '#/components/responses/Problem'
+    post:
+      summary: Create category
+      tags:
+        - categories
+      description: Create new category
+      requestBody:
+        $ref: '#/components/requestBodies/Category'
+      responses:
+        '200':
+          description: Category updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        default:
+          $ref: '#/components/responses/Problem'
+  /categories/{category-id}:
+    get:
+      summary: Get category
+      tags:
+        - categories
+      description: Returns a single category with given id
+      parameters:
+        - $ref: '#/components/parameters/CategoryId'
+      responses:
+        '200':
+          $ref: '#/components/responses/Category'
+        default:
+          $ref: '#/components/responses/Problem'
+    put:
+      summary: Update Category
+      tags:
+        - categories
+      description: Update category with given id
+      parameters:
+        - $ref: '#/components/parameters/CategoryId'
+      requestBody:
+        $ref: '#/components/requestBodies/Category'
+      responses:
+        '200':
+          description: Category updated
+        default:
+          $ref: '#/components/responses/Problem'
+  /tags:
+    get:
+      summary: List of tags
+      tags:
+        - tags
+      description: Page through list of tags
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          $ref: '#/components/responses/Tags'
+        default:
+          $ref: '#/components/responses/Problem'
+    post:
+      summary: Create tag
+      tags:
+        - tags
+      description: Create new tag
+      requestBody:
+        $ref: '#/components/requestBodies/Tag'
+      responses:
+        '200':
+          description: Tag updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        default:
+          $ref: '#/components/responses/Problem'
+  /tags/{tag-id}:
+    get:
+      summary: Get tag
+      tags:
+        - tags
+      description: Returns a single tag with given id
+      parameters:
+        - $ref: '#/components/parameters/TagId'
+      responses:
+        '200':
+          $ref: '#/components/responses/Tag'
+        default:
+          $ref: '#/components/responses/Problem'
+    put:
+      summary: Update Tag
+      tags:
+        - tags
+      description: Update tag with given id
+      parameters:
+        - $ref: '#/components/parameters/TagId'
+      requestBody:
+        $ref: '#/components/requestBodies/Tag'
+      responses:
+        '200':
+          description: Category updated
+        default:
+          $ref: '#/components/responses/Problem'
+  /products:
+    get:
+      summary: List of products
+      tags:
+        - products
+      description: Page through list of products
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          $ref: '#/components/responses/Products'
+        default:
+          $ref: '#/components/responses/Problem'
+    post:
+      summary: Create product
+      tags:
+        - products
+      description: Create new tag
+      requestBody:
+        $ref: '#/components/requestBodies/Product'
+      responses:
+        '200':
+          description: Product updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        '201':
+          description: Product created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        default:
+          $ref: '#/components/responses/Problem'
+  /products/{product-id}:
+    get:
+      summary: Get product
+      tags:
+        - products
+      description: Returns a single product with given id
+      parameters:
+        - $ref: '#/components/parameters/ProductId'
+      responses:
+        '200':
+          $ref: '#/components/responses/Product'
+        default:
+          $ref: '#/components/responses/Problem'
+    put:
+      summary: Update Tag
+      tags:
+        - products
+      description: Update product with given id
+      parameters:
+        - $ref: '#/components/parameters/ProductId'
+      requestBody:
+        $ref: '#/components/requestBodies/Product'
+      responses:
+        '200':
+          description: Product updated
+        default:
+          $ref: '#/components/responses/Problem'
+  /product-types:
+    get:
+      summary: List of product types
+      tags:
+        - product types
+      description: Page through list of product types
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          $ref: '#/components/responses/ProductTypes'
+        default:
+          $ref: '#/components/responses/Problem'
+    post:
+      summary: Create product type
+      tags:
+        - product types
+      description: Create new product type
+      requestBody:
+        $ref: '#/components/requestBodies/ProductType'
+      responses:
+        '200':
+          description: Product type updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        default:
+          $ref: '#/components/responses/Problem'
+  /product-types/{product-type-id}:
+    get:
+      summary: Get product type
+      tags:
+        - product types
+      description: Returns a single product type with given id
+      parameters:
+        - $ref: '#/components/parameters/ProductTypeId'
+      responses:
+        '200':
+          $ref: '#/components/responses/ProductType'
+        default:
+          $ref: '#/components/responses/Problem'
+    put:
+      summary: Update Porduct type
+      tags:
+        - product types
+      description: Update product type with given id
+      parameters:
+        - $ref: '#/components/parameters/ProductTypeId'
+      requestBody:
+        $ref: '#/components/requestBodies/ProductType'
+      responses:
+        '200':
+          description: Product type updated
+        default:
+          $ref: '#/components/responses/Problem'
+  /attributes:
+    get:
+      summary: List of product types
+      tags:
+        - attributes
+      description: Page through list of product types
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          $ref: '#/components/responses/Attributes'
+        default:
+          $ref: '#/components/responses/Problem'
+    post:
+      summary: Create product type
+      tags:
+        - attributes
+      description: Create new product type
+      requestBody:
+        $ref: '#/components/requestBodies/Attribute'
+      responses:
+        '200':
+          description: Product type updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        default:
+          $ref: '#/components/responses/Problem'
+  /attributes/{attribute-id}:
+    get:
+      summary: Get product type
+      tags:
+        - attributes
+      description: Returns a single product type with given id
+      parameters:
+        - $ref: '#/components/parameters/AttributeId'
+      responses:
+        '200':
+          $ref: '#/components/responses/Attribute'
+        default:
+          $ref: '#/components/responses/Problem'
+    put:
+      summary: Update Porduct type
+      tags:
+        - attributes
+      description: Update product type with given id
+      parameters:
+        - $ref: '#/components/parameters/AttributeId'
+      requestBody:
+        $ref: '#/components/requestBodies/Attribute'
+      responses:
+        '200':
+          description: Product type updated
+        default:
+          $ref: '#/components/responses/Problem'
+    delete:
+      summary: Delete attribute
+      parameters:
+        - $ref: '#/components/parameters/AttributeId'
+      responses:
+        '200':
+          description: Product type updated
+        default:
+          $ref: '#/components/responses/Problem'
+  /attribute-values:
+    get:
+      summary: List of product types
+      tags:
+        - attribute values
+      description: Page through list of product types
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Query'
+        - $ref: '#/components/parameters/Attribute'
+      responses:
+        '200':
+          $ref: '#/components/responses/AttributesValues'
+        default:
+          $ref: '#/components/responses/Problem'
+    post:
+      summary: Create product type
+      tags:
+        - attribute values
+      description: Create new product type
+      requestBody:
+        $ref: '#/components/requestBodies/AttributeValue'
+      responses:
+        '200':
+          description: Product type updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        default:
+          $ref: '#/components/responses/Problem'
+  /attribute-values/{attribute-value-id}:
+    get:
+      summary: Get product type
+      tags:
+        - attribute values
+      description: Returns a single product type with given id
+      parameters:
+        - $ref: '#/components/parameters/AttributeValueId'
+      responses:
+        '200':
+          $ref: '#/components/responses/AttributeValue'
+        default:
+          $ref: '#/components/responses/Problem'
+    put:
+      summary: Update Porduct type
+      tags:
+        - attribute values
+      description: Update product type with given id
+      parameters:
+        - $ref: '#/components/parameters/AttributeValueId'
+      requestBody:
+        $ref: '#/components/requestBodies/AttributeValue'
+      responses:
+        '200':
+          description: Product type updated
+        default:
+          $ref: '#/components/responses/Problem'
+  /customers:
+    get:
+      summary: List of customers
+      tags:
+        - customers
+      description: Page through list of product types
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Query'
+        - $ref: '#/components/parameters/Attribute'
+      responses:
+        '200':
+          $ref: '#/components/responses/Customers'
+        default:
+          $ref: '#/components/responses/Problem'
+    post:
+      summary: Create product type
+      tags:
+        - customers
+      description: Create new product type
+      requestBody:
+        $ref: '#/components/requestBodies/Customer'
+      responses:
+        '200':
+          description: Product type updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        default:
+          $ref: '#/components/responses/Problem'
+  /customers/{customer-id}:
+    get:
+      summary: Get product type
+      tags:
+        - customers
+      description: Returns a single product type with given id
+      parameters:
+        - $ref: '#/components/parameters/CustomerId'
+      responses:
+        '200':
+          $ref: '#/components/responses/Customer'
+        default:
+          $ref: '#/components/responses/Problem'
+    put:
+      summary: Update Porduct type
+      tags:
+        - customers
+      description: Update product type with given id
+      parameters:
+        - $ref: '#/components/parameters/CustomerId'
+      requestBody:
+        $ref: '#/components/requestBodies/Customer'
+      responses:
+        '200':
+          description: Product type updated
+        default:
+          $ref: '#/components/responses/Problem'
+  /files:
+    get:
+      summary: List of products
+      tags:
+        - media
+      description: Page through list of products
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Query'
+        - $ref: '#/components/parameters/Product'
+      responses:
+        '200':
+          description: Ok
+        default:
+          $ref: '#/components/responses/Problem'
+    post:
+      description: 'Add new image'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                entity_id:
+                  type: string
+                entity_key:
+                  type: string
+      responses:
+        '200':
+          description: Image uploaded
+  /files/{file-id}:
+    delete:
+      summary: Delete file
+      parameters:
+        - $ref: '#/components/parameters/FileId'
+      responses:
+        '200':
+          description: Ok
+
+  /help-categories:
+    get:
+      summary: List of car Help Categories
+      tags:
+        - help categories
+      description: List of Help Categories
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          $ref: '#/components/responses/HelpCategories'
+        default:
+          $ref: '#/components/responses/Problem'
+    post:
+      summary: Create new Help Categories
+      tags:
+        - help categories
+      description: Create new Help Categories
+      requestBody:
+        $ref: '#/components/requestBodies/HelpCategory'
+      responses:
+        '200':
+          description: Language updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        default:
+          $ref: '#/components/responses/Problem'
+  /help-categories/{help-category-id}:
+    get:
+      summary: Get Help Category by id
+      tags:
+        - help categories
+      description: Returns Help Category by id
+      parameters:
+        - $ref: '#/components/parameters/HelpCategoryId'
+      responses:
+        '200':
+          $ref: '#/components/responses/HelpCategory'
+        default:
+          $ref: '#/components/responses/Problem'
+    put:
+      summary: Update existing help category
+      tags:
+        - help categories
+      description: Update existing help category
+      parameters:
+        - $ref: '#/components/parameters/HelpCategoryId'
+      requestBody:
+        $ref: '#/components/requestBodies/HelpCategory'
+      responses:
+        '200':
+          $ref: '#/components/responses/HelpCategory'
+        default:
+          $ref: '#/components/responses/Problem'
+  /help-articles:
+    get:
+      summary: List of car Help Articles
+      tags:
+        - help articles
+      description: List of Help Articles
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          $ref: '#/components/responses/HelpArticles'
+        default:
+          $ref: '#/components/responses/Problem'
+    post:
+      summary: Create new Help Article
+      tags:
+        - help articles
+      description: Create new Help Article
+      requestBody:
+        $ref: '#/components/requestBodies/HelpArticle'
+      responses:
+        '200':
+          description: Language updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        default:
+          $ref: '#/components/responses/Problem'
+  /help-articles/{help-article-id}:
+    get:
+      summary: Get Help Article by id
+      tags:
+        - help articles
+      description: Returns Help Article by id
+      parameters:
+        - $ref: '#/components/parameters/HelpArticleId'
+      responses:
+        '200':
+          $ref: '#/components/responses/HelpArticle'
+        default:
+          $ref: '#/components/responses/Problem'
+    put:
+      summary: Update existing help article
+      tags:
+        - help articles
+      description: Update existing help article
+      parameters:
+        - $ref: '#/components/parameters/HelpArticleId'
+      requestBody:
+        $ref: '#/components/requestBodies/HelpArticle'
+      responses:
+        '200':
+          $ref: '#/components/responses/HelpArticle'
+        default:
+          $ref: '#/components/responses/Problem'
+  /home-boxes:
+    get:
+      summary: List of home boxes
+      tags:
+        - home boxes
+      description: List of home boxes
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          $ref: '#/components/responses/HomeBoxes'
+        default:
+          $ref: '#/components/responses/Problem'
+    post:
+      summary: Create new home boxes
+      tags:
+        - home boxes
+      description: Create new home boxe
+      requestBody:
+        $ref: '#/components/requestBodies/HomeBox'
+      responses:
+        '200':
+          description: Home box created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        '201':
+          description: Home box created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        default:
+          $ref: '#/components/responses/Problem'
+  /home-boxes/{home-box-id}:
+    get:
+      summary: Get home box bu id
+      tags:
+        - home boxes
+      description: Returns home vox by id
+      parameters:
+        - $ref: '#/components/parameters/HomeBoxId'
+      responses:
+        '200':
+          $ref: '#/components/responses/HomeBox'
+        default:
+          $ref: '#/components/responses/Problem'
+    put:
+      summary: Update existing home box
+      tags:
+        - home boxes
+      description: Update existing home box
+      parameters:
+        - $ref: '#/components/parameters/HomeBoxId'
+      requestBody:
+        $ref: '#/components/requestBodies/HomeBox'
+      responses:
+        '200':
+          $ref: '#/components/responses/HomeBox'
+        default:
+          $ref: '#/components/responses/Problem'
+  /orders:
+    get:
+      summary: List of orders
+      tags:
+        - orders
+      description: List of orders
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          $ref: '#/components/responses/Orders'
+        default:
+          $ref: '#/components/responses/Problem'
+    post:
+      summary: Create new order
+      tags:
+        - orders
+      description: Create new order
+      requestBody:
+        $ref: '#/components/requestBodies/Order'
+      responses:
+        '200':
+          description: Home box created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        '201':
+          description: Order created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        default:
+          $ref: '#/components/responses/Problem'
+  /orders/{order-id}:
+    get:
+      summary: Get order bu id
+      tags:
+        - orders
+      description: Returns order by id
+      parameters:
+        - $ref: '#/components/parameters/OrderId'
+      responses:
+        '200':
+          $ref: '#/components/responses/Order'
+        default:
+          $ref: '#/components/responses/Problem'
+    put:
+      summary: Update existing orders
+      tags:
+        - orders
+      description: Update existing order
+      parameters:
+        - $ref: '#/components/parameters/OrderId'
+      requestBody:
+        $ref: '#/components/requestBodies/Order'
+      responses:
+        '200':
+          $ref: '#/components/responses/Order'
+        default:
+          $ref: '#/components/responses/Problem'
+  /stores:
+    get:
+      summary: List of stores
+      tags:
+        - stores
+      description: List of stores
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          $ref: '#/components/responses/Stores'
+        default:
+          $ref: '#/components/responses/Problem'
+    post:
+      summary: Create new store
+      tags:
+        - stores
+      description: Create new store
+      requestBody:
+        $ref: '#/components/requestBodies/Store'
+      responses:
+        '200':
+          description: Store created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        '201':
+          description: Order created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+        default:
+          $ref: '#/components/responses/Problem'
+  /stores/{store-id}:
+    get:
+      summary: Get store bu id
+      tags:
+        - stores
+      description: Returns store by id
+      parameters:
+        - $ref: '#/components/parameters/StoreId'
+      responses:
+        '200':
+          $ref: '#/components/responses/Store'
+        default:
+          $ref: '#/components/responses/Problem'
+    put:
+      summary: Update existing store
+      tags:
+        - stores
+      description: Update existing store
+      parameters:
+        - $ref: '#/components/parameters/StoreId'
+      requestBody:
+        $ref: '#/components/requestBodies/Store'
+      responses:
+        '200':
+          $ref: '#/components/responses/Store'
+        default:
+          $ref: '#/components/responses/Problem'
+components:
+  parameters:
+    AuthParam:
+      name: Authorization
+      in: header
+      required: true
+      description: an authorization header `Bearer {jwt_token}`
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Limit number of returned items
+      schema:
+        type: number
+        minimum: 1
+        maximum: 1000
+        default: 100
+    Page:
+      name: page
+      in: query
+      required: false
+      description: Page number
+      schema:
+        type: number
+        minimum: 1
+        default: 1
+    Sort:
+      name: sort
+      in: query
+      required: false
+      description: Comma separated list of fields to sort on. Fields must be prefixed with + (ASC) or - (DESC).
+      example: +id
+      schema:
+        type: string
+        pattern: ^(\+|-)[a-zA-Z0-9-_]+$
+    Query:
+      name: q
+      in: query
+      required: false
+      description: Query object to filter data on. Must include fields from data
+      schema:
+        type: string
+    CountryId:
+      name: country-id
+      in: path
+      required: true
+      description: country id in UUId format
+      schema:
+        type: string
+        format: uuid
+    LanguageId:
+      name: language-id
+      in: path
+      required: true
+      description: country id in UUId format
+      schema:
+        type: string
+        format: uuid
+    LandingId:
+      name: landing-id
+      in: path
+      required: true
+      description: lanfing page id in UUId format
+      schema:
+        type: string
+        format: uuid
+    ImageId:
+      name: image-id
+      description: Image ID in UUID format
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    CategoryId:
+      name: category-id
+      description: Category ID in UUID format
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    TagId:
+      name: tag-id
+      description: Tag ID in UUID format
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    ProductId:
+      name: product-id
+      description: Product ID in UUID format
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    ProductTypeId:
+      name: product-type-id
+      description: Product type ID in UUID format
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    AttributeId:
+      name: attribute-id
+      description: Product type ID in UUID format
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    AttributeValueId:
+      name: attribute-value-id
+      description: Product type ID in UUID format
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    Attribute:
+      name: attribute_id
+      description: Product type ID in UUID format
+      in: query
+      schema:
+        type: string
+        format: uuid
+    CustomerId:
+      name: customer-id
+      description: Product type ID in UUID format
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    Product:
+      name: product
+      description: Product type ID in UUID format
+      in: query
+      schema:
+        type: string
+        format: uuid
+    HelpCategoryId:
+      name: help-category-id
+      in: path
+      required: true
+      description: Help Category id in UUId format
+      example: '024c8d63-83d7-4abe-ac4f-0c23fb8d8f26'
+      schema:
+        type: string
+        format: uuid
+    HelpArticleId:
+      name: help-article-id
+      in: path
+      required: true
+      description: Help Article id in UUId format
+      example: '024c8d63-83d7-4abe-ac4f-0c23fb8d8f26'
+      schema:
+        type: string
+        format: uuid
+    HomeBoxId:
+      name: home-box-id
+      in: path
+      required: true
+      description: HomeBox id in UUId format
+      example: '024c8d63-83d7-4abe-ac4f-0c23fb8d8f26'
+      schema:
+        type: string
+        format: uuid
+    FileId:
+      name: file-id
+      in: path
+      required: true
+      description: File id in ui format
+      schema:
+        type: string
+        format: uuid
+      example: '024c8d63-83d7-4abe-ac4f-0c23fb8d8f26'
+    OrderId:
+      name: order-id
+      in: path
+      required: true
+      description: Order id in ui format
+      schema:
+        type: string
+        format: uuid
+      example: '024c8d63-83d7-4abe-ac4f-0c23fb8d8f26'
+    StoreId:
+      name: store-id
+      in: path
+      required: true
+      description: Store id in ui format
+      schema:
+        type: string
+        format: uuid
+      example: '024c8d63-83d7-4abe-ac4f-0c23fb8d8f26'
+  responses:
+    Problem:
+      description: |
+        error occurred - see status code and problem object for more information
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    Countries:
+      description: List of Countries
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Countries'
+    Country:
+      description: Country
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Country'
+    Languages:
+      description: List of Languages
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Languages'
+    Language:
+      description: Language
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Language'
+    LandingPages:
+      description: List of LandingPages
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LandingPages'
+    LandingPage:
+      description: LandingPage
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LandingPage'
+    Image:
+      description: An Image
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+    SignedUrl:
+      description: A Signed URL
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/SignedUrl"
+    Category:
+      description: Category
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Category"
+    Categories:
+      description: List of Categories
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Categories"
+    Tag:
+      description: Tag
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Tag"
+    Tags:
+      description: List of Tags
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Tags"
+    Product:
+      description: Product
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Product"
+    Products:
+      description: List of Products
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Products"
+    ProductType:
+      description: Product type
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProductType"
+    ProductTypes:
+      description: List of Product tpes
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ProductTypes"
+    Attribute:
+      description: Product type
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Attribute"
+    Attributes:
+      description: List of Product tpes
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Attributes"
+    AttributeValue:
+      description: Product type
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/AttributeValue"
+    AttributesValues:
+      description: List of Product tpes
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/AttributeValues"
+    Customer:
+      description: Product type
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Customer"
+    Customers:
+      description: List of Product tpes
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Customers"
+    HelpCategory:
+      description: Helpcategory
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HelpCategory'
+    HelpCategories:
+      description: Help categories
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HelpCategories'
+    HelpArticle:
+      description: Helpcategory
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HelpArticle'
+    HelpArticles:
+      description: Help categories
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HelpArticles'
+    HomeBox:
+      description: HomeBox
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HomeBox'
+    HomeBoxes:
+      description: HomeBoxes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HomeBoxes'
+    Order:
+      description: Order
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Order'
+    Orders:
+      description: Orders
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Orders'
+    Store:
+      description: Store
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Store'
+    Stores:
+      description: Stores
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Stores'
+  requestBodies:
+    Country:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CountryInput'
+    Language:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LanguageInput'
+    LandingPage:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/LandingPageInput'
+    Image:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Image'
+    Category:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CategoryInput'
+    Tag:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TagInput'
+    Product:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ProductInput'
+    ProductType:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ProductTypeInput'
+    Attribute:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AttributeInput'
+    AttributeValue:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AttributeValueInput'
+    Customer:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CustomerInput'
+    HelpArticle:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HelpArticleInput'
+    HelpCategory:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HelpCategoryInput'
+    HomeBox:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HomeBoxInput'
+    Order:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OrderInput'
+    Store:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/StoreInput'
+  schemas:
+    CountryInput:
+      type: object
+      required:
+        - name
+        - code
+        - status
+      properties:
+        name:
+          type: string
+        code:
+          type: string
+        status:
+          enum: [active, inactive]
+    Country:
+      allOf:
+        - $ref: '#/components/schemas/CountryInput'
+        - type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+    Countries:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 12
+          description: Number of total drivers
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Country'
+    LanguageInput:
+      type: object
+      required:
+        - name
+        - code
+        - status
+      properties:
+        name:
+          type: string
+        code:
+          type: string
+        status:
+          enum: [active, inactive]
+    Language:
+      allOf:
+        - $ref: '#/components/schemas/LanguageInput'
+        - type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+    Languages:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 12
+          description: Number of total drivers
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Language'
+    LandingPageInput:
+      type: object
+      required:
+        - title
+        - slug
+        - meta_keyword
+        - meta_description
+        - meta_title
+        - h1
+        - content
+        - status
+        - country_id
+        - language_id
+      properties:
+        title:
+          type: string
+        slug:
+          type: string
+        meta_keyword:
+          type: string
+        meta_description:
+          type: string
+        meta_title:
+          type: string
+        h1:
+          type: string
+        content:
+          type: string
+        status:
+          enum: [active, inactive]
+        country_id:
+          type: string
+          format: uuid
+        language_id:
+          type: string
+          format: uuid
+    LandingPage:
+      allOf:
+        - $ref: '#/components/schemas/LandingPageInput'
+        - type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+    LandingPages:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 12
+          description: Number of total landing pages
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/LandingPage'
+    Image:
+      type: object
+      required:
+        - title
+        - file_name
+        - content_type
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        file_name:
+          type: string
+        content_type:
+          type: string
+        entity_id:
+          type: string
+        entity_key:
+          type: string
+        src:
+          type: string
+    SignedUrl:
+      type: object
+      required:
+        - fields
+        - url
+      properties:
+        fields:
+          type: object
+        url:
+          type: string
+    CategoryInput:
+      type: object
+      required:
+        - name
+        - status
+      properties:
+        name:
+          type: object
+        description:
+          type: object
+        meta_keyword:
+          type: string
+        meta_description:
+          type: string
+        top:
+          type: boolean
+        sort_order:
+          type: integer
+        content:
+          type: string
+        status:
+          enum: [active, inactive]
+        parent_id:
+          type: string
+          format: uuid
+    Category:
+      allOf:
+        - $ref: '#/components/schemas/CategoryInput'
+        - type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+    Categories:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 12
+          description: Number of total landing pages
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+    TagInput:
+      type: object
+      required:
+        - name
+        - status
+      properties:
+        name:
+          type: object
+        description:
+          type: object
+        meta_keyword:
+          type: string
+        meta_description:
+          type: string
+        status:
+          enum: [active, inactive]
+    Tag:
+      allOf:
+        - $ref: '#/components/schemas/TagInput'
+        - type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+    Tags:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 12
+          description: Number of total landing pages
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+    ProductInput:
+      type: object
+      properties:
+        tags:
+          type: array
+    Product:
+      allOf:
+        - $ref: '#/components/schemas/ProductInput'
+        - type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+    Products:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 12
+          description: Number of total products
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+    ProductTypeInput:
+      type: object
+      required:
+        - name
+        - description
+        - status
+      properties:
+        name:
+          type: object
+        description:
+          type: object
+        status:
+          enum: [active, inactive]
+    ProductType:
+      allOf:
+        - $ref: '#/components/schemas/ProductTypeInput'
+        - type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+    ProductTypes:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 12
+          description: Number of total products
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductType'
+    AttributeInput:
+      type: object
+      required:
+        - status
+      properties:
+        name:
+          type: object
+        description:
+          type: object
+        status:
+          enum: [active, inactive]
+    Attribute:
+      allOf:
+        - $ref: '#/components/schemas/AttributeInput'
+        - type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+    Attributes:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 12
+          description: Number of total products
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attribute'
+    AttributeValueInput:
+      type: object
+      required:
+        - status
+      properties:
+        name:
+          type: object
+        description:
+          type: object
+        status:
+          enum: [active, inactive]
+    AttributeValue:
+      allOf:
+        - $ref: '#/components/schemas/AttributeValueInput'
+        - type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+    AttributeValues:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 12
+          description: Number of total products
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttributeValue'
+    CustomerInput:
+      type: object
+      required:
+        - first_name
+      properties:
+        first_name:
+          type: string
+    Customer:
+      allOf:
+        - $ref: '#/components/schemas/CustomerInput'
+        - type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+    Customers:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 12
+          description: Number of total products
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
+    HelpCategoryInput:
+      type: object
+      required:
+        - name
+        - status
+      properties:
+        name:
+          type: object
+        status:
+          enum: [active, inactive]
+    HelpCategory:
+      allOf:
+        - $ref: '#/components/schemas/HelpCategoryInput'
+        - type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+    HelpCategories:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 12
+          description: Number of total drivers
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HelpCategory'
+    HelpArticleInput:
+      type: object
+      required:
+        - name
+        - content
+        - status
+        - category_id
+      properties:
+        name:
+          type: object
+        content:
+          type: object
+        category_id:
+          type: string
+          format: uuid
+        status:
+          enum: [active, inactive]
+    HelpArticle:
+      allOf:
+        - $ref: '#/components/schemas/HelpArticleInput'
+        - type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+    HelpArticles:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 12
+          description: Number of total drivers
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HelpArticle'
+    HomeBoxInput:
+      type: object
+      required:
+        - name
+        - status
+      properties:
+        name:
+          type: object
+        content:
+          type: object
+        tags:
+          type: array
+        landings:
+          type: array
+        status:
+          enum: [active, inactive]
+    HomeBox:
+      allOf:
+        - $ref: '#/components/schemas/HomeBoxInput'
+        - type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+    HomeBoxes:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 12
+          description: Number of total drivers
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/HomeBox'
+    OrderInput:
+      type: object
+      properties:
+        total_price:
+          type: number
+    Order:
+      allOf:
+        - $ref: '#/components/schemas/OrderInput'
+        - type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+    Orders:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 12
+          description: Number of total order
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+    StoreInput:
+      type: object
+      properties:
+        company_name:
+          type: string
+    Store:
+      allOf:
+        - $ref: '#/components/schemas/StoreInput'
+        - type: object
+          properties:
+            created:
+              type: string
+              format: date-time
+            updated:
+              type: string
+              format: date-time
+    Stores:
+      type: object
+      properties:
+        total:
+          type: number
+          example: 12
+          description: Number of total order
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Store'
+    Problem:
+      type: object
+      properties:
+        type:
+          type: string
+          format: uri
+          description: |
+            An absolute URI that identifies the problem type.  When dereferenced,
+            it SHOULD provide human-readable documentation for the problem type
+            (e.g., using HTML).
+          default: 'about:blank'
+          example: 'https://zalando.github.io/problem/constraint-violation'
+        title:
+          type: string
+          description: |
+            A short, summary of the problem type. Written in english and readable
+            for engineers (usually not suited for non technical stakeholders and
+            not localized); example: Service Unavailable
+        status:
+          type: integer
+          format: int32
+          description: |
+            The HTTP status code generated by the origin server for this occurrence
+            of the problem.
+          minimum: 100
+          maximum: 600
+          exclusiveMaximum: true
+          example: 503
+        detail:
+          type: string
+          description: |
+            A human readable explanation specific to this occurrence of the
+            problem.
+          example: Connection to database timed out
+        instance:
+          type: string
+          format: uri
+          description: |
+            An absolute URI that identifies the specific occurrence of the problem.
+            It may or may not yield further information if dereferenced.

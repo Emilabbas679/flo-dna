@@ -1,0 +1,124 @@
+openapi: 3.0.2
+
+info:
+  title: Delhero Driver API
+  version: 1.0.0
+  description: 6second Driver API
+  contact:
+      name: Ali Heyderli
+      email: ali.heyderli@gmail.com
+
+servers:
+  - url: http://127.0.0.1:5000/auth/api
+    description: Development server
+
+paths:
+  /drivers/registration:
+    post:
+      summary: Driver registration
+      tags:
+        - drivers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/VerificationInput'
+                - $ref: '#/components/schemas/PhoneNumberInput'
+                - $ref: '#/components/schemas/AccountInput'
+      responses:
+        '200':
+          description: Created
+        '202':
+          description: Accepted
+        default:
+          description: |
+            error occurred - see status code and problem object for more information
+          content:
+            application/problem+json:
+              schema:
+                $ref: https://zalando.github.io/problem/schema.yaml#/Problem
+  /customers/registration:
+    post:
+      summary: Customer registration
+      tags:
+        - customers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/VerificationInput'
+                - $ref: '#/components/schemas/PhoneNumberInput'
+                - $ref: '#/components/schemas/AccountInput'
+      responses:
+        '200':
+          description: Created
+        '202':
+          description: Accepted
+        default:
+          description: |
+            error occurred - see status code and problem object for more information
+          content:
+            application/problem+json:
+              schema:
+                $ref: https://zalando.github.io/problem/schema.yaml#/Problem
+components:
+  schemas:
+    PhoneNumberInput:
+      type: object
+      required:
+        - step
+        - country_code
+        - number
+      properties:
+        step:
+          type: string
+          enum: [phone_number]
+        country_code:
+          type: string
+          pattern: ^(\+)[0-9]{1,3}$
+        number:
+          type: string
+          pattern: ^[0-9]{9}$
+    VerificationInput:
+      type: object
+      required:
+        - step
+        - verification_id
+        - sms_code
+      properties:
+        step:
+          type: string
+          enum: [code]
+        verification_id:
+          type: string
+          format: uuid
+        sms_code:
+          type: string
+          pattern: ^[0-9]{6}$
+    AccountInput:
+      type: object
+      required:
+        - step
+        - verification_id
+        - first_name
+        - last_name
+        - email
+      properties:
+        step:
+          type: string
+          enum: [account]
+        verification_id:
+          type: string
+          format: uuid
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+          format: email
+
