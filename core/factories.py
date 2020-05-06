@@ -61,8 +61,8 @@ def get_bundled_specs(main_file):
 
 
 def register_api(app):
-    app.add_api(get_bundled_specs(Path('api_specs/admin-api.yaml')),
-                resolver=RestyResolver('app.admin_api.controllers'))
+    # app.add_api(get_bundled_specs(Path('api_specs/admin-api.yaml')),
+    #             resolver=RestyResolver('app.admin_api.controllers'))
     return None
 
 

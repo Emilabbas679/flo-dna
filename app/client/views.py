@@ -17,7 +17,6 @@ from app.data.models import Customer, Cart, WishList, Country, Language, Currenc
     CelebrityDetailTag, CustomerPhone, Order, SubOrder, Store, StoreOffer, ExtraOrder
 from . import client
 from .forms.client_forms import LoginForm, RegisterForm, UpdateUserForm, CountryForm
-from ..admin_api.controllers.products import serializer
 import uuid
 
 
